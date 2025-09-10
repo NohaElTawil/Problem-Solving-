@@ -1,20 +1,20 @@
 #include <iostream>
+#include "bits/stdc++.h"
 using namespace std;
+
 int main() {
-    int N;
-    cin >> N;
-
-    if (N >= 1) cout << 0;
-    if (N >= 2) cout << " " << 1;
-
-    int a = 0, b = 1;
-    for (int i = 3; i <= N; ++i) {
-        int c = a + b;
-        cout << " " << c;
-        a = b;
-        b = c;
+    long long n ;
+    cin >> n ;
+    if (n<=2) {
+        cout << n-1 ;
     }
-
-    cout << endl;
-    return 0;
+    else {
+        long long fb[n];
+        fb[0] = 0;
+        fb[1] = 1;
+        for (int i = 2; i < n; i++) {
+            fb[i] = fb[i - 1] + fb[i - 2];
+        }
+        cout << fb[n - 1] ;
+    }
 }
