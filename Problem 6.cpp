@@ -1,16 +1,27 @@
-#include "bits/stdc++.h"
+#include<iostream>
 using namespace  std ;
 int main () {
-    int d1, d2, d3;
-    cin >> d1 >> d2 >> d3;
-
-    int option1 = d1 + d2 + d3;
-    int option2 = 2 * (d1 + d2);
-    int option3 = 2 * (d1 + d3);
-    int option4 = 2 * (d2 + d3);
-
-    int result = min({option1, option2, option3, option4});
-
-    cout << result << endl;
-
+    int x ;
+    cin >> x ;
+    string word ;
+    cin >> word ;
+    int Acounter = 0 , Dcounter = 0;
+    for (int i = 0 ; i < x ; i++) {
+        if ( word[i] == 'A') {
+            Acounter++ ;
+        }
+        else if ( word[i] == 'D') {
+            Dcounter ++ ;
+        }
+    }
+    if (Acounter > Dcounter) {
+        cout << "Anton" << endl;
+    }
+    else if (Dcounter > Acounter) {
+        cout << "Danik" << endl;
+    }
+    else {
+        cout << "Friendship" << endl;
+    }
 }
+

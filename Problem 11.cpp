@@ -1,9 +1,16 @@
-#include <iostream>
-using namespace std;
-
-int main() {
-    int m , n ;
-    cin >> m >> n ;
-    int d = (m*n)/2 ;
-    cout << d ;
+#include<iostream>
+using namespace  std ;
+int main () {
+    long long n ;
+    cin >> n ;
+    bool flag = true ;
+    int level = 0 , totalsum = 0 ;
+    for (int i = 1 ; flag ; i++) {
+        level+=i ;
+        totalsum+=level ;
+        if (totalsum>n) {
+            cout << i-1 ;
+            break;
+        }
+    }
 }

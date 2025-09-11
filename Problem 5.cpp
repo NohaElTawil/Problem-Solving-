@@ -1,18 +1,19 @@
-#include<iostream>
-using namespace  std ;
-int main () {
-    long long n;
-    cin >> n;
-
-    long long bills = 0;
-    int arr [5] = {100, 20, 10, 5, 1};
-
-    for (int i = 0; i < 5; ++i) {
-        bills += n / arr[i];
-        n %= arr[i];
+#include <iostream>
+#include <cmath>
+#include "bits/stdc++.h"
+using namespace std;
+int main() {
+    int n ;
+    cin >> n ;
+    string s ;
+    for (int i = 0 ; i < n ; i++) {
+        cin >> s ;
+        if (s.size() <= 10) {
+            cout << s << endl ;
+            continue ;
+        }
+        else {
+            cout << s[0] << s.size() - 2 << s[s.size()-1] << endl ;
+        }
     }
-
-    cout << bills << endl;
-
-    return 0;
 }

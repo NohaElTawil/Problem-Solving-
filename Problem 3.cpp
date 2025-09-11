@@ -1,11 +1,18 @@
-#include<iostream>
-using namespace  std ;
-int main () {
-    int x;
-    cin >> x;
-    int steps = x / 5;
-    if (x % 5 != 0)
-        steps++;
-    cout << steps << endl;
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    string s, t;
+    cin >> s >> t;
+
+    reverse(s.begin(), s.end());
+
+    if (s == t)
+        cout << "YES" << endl;
+    else
+        cout << "NO" << endl;
+
     return 0;
 }

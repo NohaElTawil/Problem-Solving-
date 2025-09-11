@@ -1,8 +1,18 @@
 #include<iostream>
 using namespace  std ;
 int main () {
-    double l , p , q ;
-    cin >> l >> p >> q ;
-    double d = (p * l) / (p + q) ;
-    cout << d ;
+    int n ;
+    cin >> n ;
+    int counter = 0 ;
+    for (int i = 0 ; i < n ; i++) {
+        string X ;
+        cin >> X ;
+        if (X=="X++" || X=="++X") {
+            counter ++ ;
+        }
+        else if (X=="X--" || X=="--X") {
+            counter -- ;
+        }
+    }
+    cout << counter << endl;
 }
