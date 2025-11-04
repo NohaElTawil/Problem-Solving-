@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+const int s = 500;
+
+void swapRow(int arr[s][s], int num1, int num2, int n) {
+    for (int i = 0; i < n; i++) {
+        int temp = arr[num1][i];
+        arr[num1][i] = arr[num2][i];
+        arr[num2][i] = temp;
+    }
+}
+
+void swapColumn(int arr[s][s], int num1, int num2, int n) {
+    for (int i = 0; i < n; i++) {
+        int temp = arr[i][num1];
+        arr[i][num1] = arr[i][num2];
+        arr[i][num2] = temp;
+    }
+}
+
+void print(int arr[s][s], int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int n, num1, num2;
+    cin >> n >> num1 >> num2;
+    int arr[s][s];
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> arr[i][j];
+        }
+    }
+
+    num1--; // convert to 0-based index
+    num2--;
+
+    swapRow(arr, num1, num2, n);
+    swapColumn(arr, num1, num2, n);
+
+    print(arr, n);
+
+    return 0;
+}
