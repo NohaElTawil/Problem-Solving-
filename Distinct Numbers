@@ -1,0 +1,36 @@
+#include <iostream>
+#include <algorithm>  // No need for bits/stdc++.h in real code
+using namespace std;
+
+const int s = 1000;
+
+int countNumber(int arr[s], int n) {
+    int counter = 1;
+    for (int i = 0; i < n - 1; i++) {
+        if (arr[i] != arr[i + 1]) {
+            counter++;
+        }
+    }
+    return counter;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    int arr[s];
+
+    if (n == 0) {
+        cout << 0;
+        return 0;
+    }
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    sort(arr, arr + n);
+
+    cout << countNumber(arr, n) << endl;
+
+    return 0;
+}
