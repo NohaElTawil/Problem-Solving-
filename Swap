@@ -1,0 +1,12 @@
+#include <iostream>
+#include "bits/stdc++.h"
+using namespace std;
+void swap_num (long long x , long long y) {
+    swap (x,y) ;
+    cout << x << ' ' << y ;
+}
+int main() {
+long long x , y ;
+cin >> x >> y ;
+swap_num (x,y) ;
+}
