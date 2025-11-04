@@ -1,0 +1,32 @@
+#include <iostream>
+#include "bits/stdc++.h"
+using namespace std;
+
+bool odd(long long n) {
+    return n % 2 != 0;
+}
+
+bool palindrome(long long n) {
+    string s = "";
+    while (n != 0) {
+        s += (n % 2) + '0';  
+        n /= 2;
+    }
+
+    string w = s;
+    reverse(s.begin(), s.end());
+    return w == s;
+}
+
+int main() {
+    long long n;
+    cin >> n;
+
+    if (odd(n) && palindrome(n)) {
+        cout << "YES";
+    } else {
+        cout << "NO";
+    }
+
+    return 0;
+}
