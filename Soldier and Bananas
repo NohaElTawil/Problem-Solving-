@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int cost, dollars, banana;
+    cin >> cost >> dollars >> banana;
+
+    long long totalCost = (long long)cost * banana * (banana + 1) / 2;
+    long long borrow = totalCost - dollars;
+
+    if (borrow < 0) borrow = 0;
+
+    cout << borrow << endl;
+
+    return 0;
+}
