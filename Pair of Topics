@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<long long> a(n), b(n), d(n);
+    for (int i = 0; i < n; ++i) cin >> a[i];
+    for (int i = 0; i < n; ++i) cin >> b[i];
+
+    for (int i = 0; i < n; ++i) d[i] = a[i] - b[i];
+
+    sort(d.begin(), d.end());
+
+    long long count = 0;
+    for (int i = 0; i < n; ++i) {
+
+        auto it = upper_bound(d.begin() + i + 1, d.end(), -d[i]);
+        count += d.end() - it;
+    }
+
+    cout << count << '\n';
+    return 0;
+}
