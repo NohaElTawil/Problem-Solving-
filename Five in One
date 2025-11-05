@@ -1,0 +1,88 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int countDivisor(int num) {
+    int divisorCounter = 0;
+    for (int k = 1; k <= num / 2; k++) {
+        if (num % k == 0) {
+            divisorCounter++;
+        }
+    }
+    return divisorCounter + 1;
+}
+
+bool palindrome(int num) {
+    int p = num;
+    int reversed = 0;
+    while (num > 0) {
+        int digit = num % 10;
+        reversed = reversed * 10 + digit;
+        num /= 10;
+    }
+    return (p == reversed);
+}
+
+int main() {
+    int n;
+    cin >> n;
+    int arr[n];
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    sort(arr, arr + n);
+
+    cout << "The maximum number : " << arr[n - 1] << endl;
+    cout << "The minimum number : " << arr[0] << endl;
+
+    int countPrime = 0;
+    int countPalindrome = 0;
+
+    // Count palindrome numbers
+    for (int i = 0; i < n; i++) {
+        if (palindrome(arr[i])) {
+            countPalindrome++;
+        }
+    }
+
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] <= 1) continue;
+        bool isComposite = false;
+        for (int j = 2; j <= arr[i] / 2; j++) {
+            if (arr[i] % j == 0) {
+                isComposite = true;
+                break;
+            }
+        }
+        if (!isComposite) countPrime++;
+    }
+
+    cout << "The number of prime numbers : " << countPrime << endl;
+    cout << "The number of palindrome numbers : " << countPalindrome << endl;
+
+
+    int maxDivisors = 0;
+    for (int i = 0; i < n; i++) {
+        int d = countDivisor(arr[i]);
+        if (d > maxDivisors) {
+            maxDivisors = d;
+        }
+    }
+
+    
+    int numberWithMaxDivisors = 0;
+    for (int i = 0; i < n; i++) {
+        int d = countDivisor(arr[i]);
+        if (d == maxDivisors && arr[i] > numberWithMaxDivisors) {
+            numberWithMaxDivisors = arr[i];
+        }
+    }
+
+    cout << "The number that has the maximum number of divisors : "
+         << numberWithMaxDivisors << endl;
+
+    return 0;
+}
