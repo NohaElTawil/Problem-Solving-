@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    vector<pair<string, int>> v(n);
+
+
+    for (int i = 0; i < n; i++) {
+        cin >> v[i].first;
+        v[i].second = i + 1;
+    }
+
+
+    auto cmp = [&](const pair<string, int>& a, const pair<string, int>& b) {
+        for (int i = 0; i < m; i++) {
+            char ca = a.first[i];
+            char cb = b.first[i];
+
+            if (ca == cb) continue;
+
+            if ((i + 1) % 2 == 1) {
+
+                return ca < cb;
+            } else {
+
+                return ca > cb;
+            }
+        }
+        return false;
+    };
+
+
+    sort(v.begin(), v.end(), cmp);
+
+
+    for (auto& book : v) {
+        cout << book.second << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
