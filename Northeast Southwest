@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    int dir = 0;
+
+    for (int i = 0; i < n; ++i) {
+        string command;
+        cin >> command;
+
+        if (command == "right") {
+            dir = (dir + 1) % 4;
+        } else if (command == "left") {
+            dir = (dir + 3) % 4;
+        } else if (command == "back") {
+            dir = (dir + 2) % 4;
+        }
+    }
+
+    string directions[4] = {"north", "east", "south", "west"};
+    cout << directions[dir] << "\n";
+
+    return 0;
+}
