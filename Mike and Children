@@ -1,0 +1,61 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<int> a(n);
+    for (int &x : a) cin >> x;
+
+    sort(a.begin(), a.end());
+
+    int max_children = 0;
+
+    // We'll check all possible sums
+    for (int i = 0; i < n; ++i) {
+        for (int j = i + 1; j < n; ++j) {
+            int target_sum = a[i] + a[j];
+
+            // Two pointers to find pairs summing to target_sum
+            int left = 0, right = n - 1;
+            vector<bool> used(n, false);
+            int count_pairs = 0;
+
+            while (left < right) {
+                if (used[left]) {
+                    left++;
+                    continue;
+                }
+                if (used[right]) {
+                    right--;
+                    continue;
+                }
+
+                int current_sum = a[left] + a[right];
+                if (current_sum == target_sum) {
+                    count_pairs++;
+                    used[left] = true;
+                    used[right] = true;
+                    left++;
+                    right--;
+                } else if (current_sum < target_sum) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+
+            if (count_pairs > max_children) {
+                max_children = count_pairs;
+            }
+        }
+    }
+
+    cout << max_children << "\n";
+
+    return 0;
+}
