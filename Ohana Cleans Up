@@ -1,0 +1,24 @@
+#include <iostream>
+#include <algorithm>
+#include <map>
+
+using namespace std;
+
+int main() {
+    int n ;
+    cin >> n ;
+    map <string , int > mp ;
+    for (int i = 0 ; i < n ; i++) {
+        string row ;
+        cin >> row ;
+        mp[row] ++ ;
+    }
+    int row2 = 0 ;
+    for (auto& sweep : mp) {
+        if (sweep.second > row2) {
+            row2 = sweep.second ;
+        }
+    }
+    cout << row2 << endl;
+    return 0 ;
+}
