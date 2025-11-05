@@ -1,0 +1,53 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    string s1, s2, s3;
+    cin >> s1 >> s2 >> s3;
+
+    int count[3] = {0};
+
+    string inputs[3] = {s1, s2, s3};
+
+
+    for (int i = 0; i < 3; ++i) {
+        char left = inputs[i][0];
+        char op = inputs[i][1];
+        char right = inputs[i][2];
+
+        int l = left - 'A';
+        int r = right - 'A';
+
+        if (op == '>') {
+            count[l]++;
+        } else if (op == '<') {
+            count[r]++;
+        }
+    }
+
+    string coins[3] = {"A", "B", "C"};
+    string prefixed[3];
+
+    for (int i = 0; i < 3; ++i) {
+        prefixed[i] = char('0' + count[i]) + coins[i];
+    }
+
+
+    sort(prefixed, prefixed + 3);
+
+
+    if (prefixed[0][0] == prefixed[1][0] || prefixed[1][0] == prefixed[2][0]) {
+        cout << "Impossible" << endl;
+    } else {
+
+        for (int i = 0; i < 3; ++i) {
+            cout << prefixed[i][1];
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
