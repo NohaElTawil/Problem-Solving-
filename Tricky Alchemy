@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    long long A, B;
+    cin >> A >> B;
+
+    long long x, y, z;
+    cin >> x >> y >> z;
+
+    long long yellow_needed = 2 * x + y;
+    long long blue_needed = y + 3 * z;
+
+    long long extra_yellow = max(0LL, yellow_needed - A);
+    long long extra_blue = max(0LL, blue_needed - B);
+
+    cout << (extra_yellow + extra_blue) << "\n";
+
+    return 0;
+}
