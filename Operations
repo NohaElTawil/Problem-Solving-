@@ -1,0 +1,32 @@
+#include <iostream>
+#include <set>
+
+
+using namespace std;
+
+int main() {
+    int P;
+    cin >> P;
+
+    while (P--) {
+        int A, B;
+        cin >> A >> B;
+
+        set<double> results;
+
+        results.insert(A + B);
+        results.insert(A - B);
+        results.insert(B - A);
+        results.insert(1.0 * A * B);
+
+
+        if (B != 0)
+            results.insert(1.0 * A / B);
+        if (A != 0)
+            results.insert(1.0 * B / A);
+
+        cout << results.size() << endl;
+    }
+
+    return 0;
+}
