@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool is_valid_rbs(const string& s) {
+    int balance = 0;
+    for (char ch : s) {
+        if (ch == '(') balance++;
+        else balance--;
+        if (balance < 0) return false; 
+    }
+    return balance == 0;
+}
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string s;
+        cin >> s;
+        int n = s.length();
+        int question_count = 0;
+        for (char ch : s) {
+            if (ch == '?') question_count++;
+        }
+        
+        string replaced = s;
+        int open_needed = question_count / 2;
+        int close_needed = question_count - open_needed; 
+
+        for (int i = 0; i < n; ++i) {
+            if (replaced[i] == '?') {
+                if (open_needed > 0) {
+                    replaced[i] = '(';
+                    open_needed--;
+                } else {
+                    replaced[i] = ')';
+                }
+            }
+        }
+        
+        if (is_valid_rbs(replaced)) {
+            cout << "YES\n";
+        } else {
+            cout << "NO\n";
+        }
+    }
+    return 0;
+}
