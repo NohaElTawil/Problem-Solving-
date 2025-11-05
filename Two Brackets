@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int max_moves(string& s) {
+    int open_round = 0, open_square = 0;
+    int moves = 0;
+
+    for (char ch : s) {
+        if (ch == '(') {
+            open_round++;
+        } else if (ch == ')') {
+            if (open_round > 0) {
+                open_round--;
+                moves++;
+            }
+        } else if (ch == '[') {
+            open_square++;
+        } else if (ch == ']') {
+            if (open_square > 0) {
+                open_square--;
+                moves++;
+            }
+        }
+    }
+
+    return moves;
+}
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string s;
+        cin >> s;
+        cout << max_moves(s) << '\n';
+    }
+    return 0;
+}
