@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string s;
+    cin >> s;
+
+    int open_count = 0;
+    int matched = 0;
+
+    for (char ch : s) {
+        if (ch == '(') {
+            open_count++;
+        } else if (ch == ')') {
+            if (open_count > 0) {
+                matched += 2;
+                open_count--;
+            }
+        }
+    }
+
+    cout << matched << endl;
+
+    return 0;
+}
